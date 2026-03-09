@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - Laptop Futurista 2026</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(30, 30, 30, 0.7); 
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+
+        header .logo h1 {
+            font-size: 2em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .cart {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.7); 
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .cart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .background {
+            position: absolute;  
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Fundo.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: blur(10px); 
+            z-index: -1; 
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgba(66, 66, 66, 0.384);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .item-details {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .remove-item {
+            padding: 10px 20px;
+            background-color: #ff4f4f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-item:hover {
+            background-color: #e43c3c;
+        }
+
+        .cart-summary {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+            background-color: rgba(66, 66, 66, 0.384);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-btn {
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .checkout-btn:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 10px;
+            text-align: center;
+            margin-top: 40px;
+            color: #aaa;
+            margin-top: auto; /* Empurra o footer para o final da página */
+    background: rgba(30, 30, 30, 0.7);
+    padding: 10px;
+    text-align: center;
+    color: #aaa;
+        }
+
+
+        .footer a {
+            color: #008cff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #0053a0;
+        }
+
+        ul li a:hover {
+            color: rgb(190, 190, 190);
+        }
+        .cart:hover{
+            transition: all 0.3s ease;
+            transform: scale(1.05); 
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <header>
+        <div class="logo">
+            <h1>Carrinho</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="preview.html">Loja</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="cart">
+        <div class="cart-container">
+            <h2>Carrinho de Compras</h2>
+            <div class="cart-item">
+    <img src="aspire-vero.png" alt="Laptop Futurista 2026">
+    <div class="item-details">
+        <h3>Eclipse 8</h3>
+        <p>Preço Unitário: 10.000,00€</p>
+        <p>Quantidade: 
+            <button id="decrease-btn" class="quantity-btn">-</button>
+            <input type="number" id="quantity" value="1" min="1" readonly>
+            <button id="increase-btn" class="quantity-btn">+</button>
+        </p>
+        <p>Total: <span id="total-price">10.000,00€</span></p>
+    </div>
+    <button class="remove-item">Remover</button>
+</div>
+            <div class="cart-summary">
+                <p><strong>Total do Carrinho:</strong>  10.000,00€</p>
+                <button class="checkout-btn">Finalizar Compra</button>
+            </div>
+        </div>
+    </section>
+
+
+<footer class="footer">
+    <p>&copy; 2026 Laptop Futurista - Todos os direitos reservados | <a href="#">Política de Privacidade</a></p>
+</footer>
+
+
+<script>
+
+    const pricePerItem = 10000;
+
+
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceElement = document.getElementById('total-price');
+    const increaseBtn = document.getElementById('increase-btn');
+    const decreaseBtn = document.getElementById('decrease-btn');
+
+
+    function updateTotalPrice() {
+
+        const quantity = parseInt(quantityInput.value);
+        const totalPrice = pricePerItem * quantity;
+
+        totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+
+    function increaseQuantity() {
+
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+
+        updateTotalPrice();
+    }
+
+
+    function decreaseQuantity() {
+
+        if (parseInt(quantityInput.value) > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+            updateTotalPrice();
+        }
+    }
+
+
+    increaseBtn.addEventListener('click', increaseQuantity);
+    decreaseBtn.addEventListener('click', decreaseQuantity);
+
+  
+    updateTotalPrice();
+</script>
+</body>
+</html>
